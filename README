@@ -1,0 +1,56 @@
+Name: Sfiraiala Maria
+Group: 314CA
+
+-------------------------------------------------------------------------------
+
+ The Library of HashBabel - Project 2
+
+-------------------------------------------------------------------------------
+
+Description:
+
+- The project aims to work with 2 different types of hashtables; however, a
+generic implementation provides the same data strcuture for both of them.
+- These 2 hashtables refer to the manner in which we store books in a library
+(each book is by itself a hashmap, containing multiple definitions) and the
+users database approach.
+- For every book we store, we also need to memorize a plethora of information
+regarding it: its number of purchases (the number of users that borrowed it
+from the library), its rating, whether it is borrowed and its name, since
+we won't be able to access it after the hash function is applied (we'll
+consider the key for every book in the library its name)
+- For every user in our database, we'll store other information besides their
+name too: the number of points, whether the user is banned from the library, 
+the book he's currently borrowing, and the days available for the reading of
+said book.
+- Supported commands include adding books and users to the database, removing
+books and definitons, adding definitions, borrowing, returning, marking books
+as lost and so on.
+- For command parsing we used sscanf; even though this project doesn't aim to
+work with threads, unsafe multithreading functions generally used for string
+parsing were avoided (e.g. strtok).
+- When it comes to sorting the books and users for the final, exit command, we
+decided to use the qsort() library function: it offers a O(nlogn) time
+complexity while keeping the programmer's work at minimum: we were expected to
+implement the compare function only
+
+-------------------------------------------------------------------------------
+
+Observations regarding the project:
+
+- Implementing a generic hashtable has its good sides and not so bright sides:
+it increases the modularization of the project, while also, making the resize
+functionality of the hashtable harder to implement (note the freshly added 2
+fields in the info structure, regarding the size of the key and the size of the
+value).
+- What's more, just like in the previous project, freeing the dynamically
+allocated memory was a challenge; working with pointers seems to still be a
+problem that needs to be addressed and, nevertheless, it was really bothersome
+when valgrind simply refused to show that godly message: "All heap blocks were
+freed -- no leaks are possible".
+- As a note to future self, correctly implementing the functions used in
+afferent labs is a must! Almost all my bugs came from not properly checking
+previous work done for this subject and pinpointing the source of my misery
+was tough.
+
+-------------------------------------------------------------------------------
